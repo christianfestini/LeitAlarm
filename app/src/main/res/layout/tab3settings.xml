@@ -1,0 +1,122 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:layout_marginBottom="@dimen/appbar_padding_top"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.leitner.tabbedexample.MainActivity$PlaceholderFragment">
+
+        <Switch
+            android:id="@+id/switch_mute_notifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="47dp"
+            android:text="@string/mute_notifications" />
+
+        <TextView
+            android:id="@+id/textview_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/switch_mute_notifications"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="27dp"
+            android:text="@string/dnd_from" />
+
+        <TextView
+            android:id="@+id/textviet_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText_time_from"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="@string/dnd_to" />
+
+        <EditText
+            android:id="@+id/editText_time_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textview_from"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="time"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/editText_time_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textviet_to"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="time"
+            android:textAlignment="center" />
+
+        <Switch
+            android:id="@+id/switch_use_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="100dp"
+            android:text="@string/use_calendar" />
+
+        <TextView
+            android:id="@+id/textView_or"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/switch_use_calendar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="43dp"
+            android:text="@string/or" />
+
+        <Button
+            android:id="@+id/button_reset_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:enabled="true"
+            android:text="@string/reset_app" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView_or"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="11dp"
+            android:text="@string/botclient_status"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/image_botclient_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/switch_mute_notifications"
+            android:layout_alignTop="@+id/textView"
+            app:srcCompat="@mipmap/server_offline" />
+
+        <!--<Button-->
+        <!--android:id="@+id/button_reset_app"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:text="Reset" />-->
+
+    </RelativeLayout>
+</ScrollView>

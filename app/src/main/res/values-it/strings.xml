@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SnowAlert</string>
+    <string name="action_settings">Impostazioni</string>
+
+    <string name="welcome">Benvenuto a SnowAlert</string>
+    <string name="welcome_message">Prego registrarsi a un resort per ricevere notifiche</string>
+    <string name="register">Registrare</string>
+    <string name="download_resorts">Caricando resorts dal server</string>
+    <string name="actual_alarm">Attuale</string>
+    <string name="historic_alarm">Archivio</string>
+    <string name="settings">Impostazioni</string>
+    <string name="no_alarms_actual">Nessun\' allarme da mostrare</string>
+    <string name="mute_notifications">Non disturbare</string>
+    <string name="use_calendar">Non disturbare basato su eventi del calendario</string>
+    <string name="dnd_from">Dalle:</string>
+    <string name="dnd_to">Alle:</string>
+    <string name="or">O</string>
+    <string name="connection_timeout">"Nessuna connessione con il server! Prego verficare di avere una connessione funzionante con il internet e provare piú tardi"</string>
+    <string name="reset_app">Ripristina applicazione</string>
+    <string name="alert">Attenzione</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="botclient_status">BotClient status</string>
+    <string name="reset_app_message">Sei sicuro di ripristinare l\'applicazione?</string>
+    <string name="reset_app_unregister">Deregistrare dal resort?</string>
+    <string name="unregistering">Deregistrazione. Aspettare per favore...</string>
+
+    <string name="title_activity_web">WebActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notificazioni</string>
+
+    <string name="title_activity_web_fullscreen">WebFullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>

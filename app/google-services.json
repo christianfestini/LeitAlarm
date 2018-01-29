@@ -1,0 +1,104 @@
+{
+  "project_info": {
+    "project_number": "833472560826",
+    "firebase_url": "https://leitalarm.firebaseio.com",
+    "project_id": "leitalarm",
+    "storage_bucket": "leitalarm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833472560826:android:cbb9c8117620b52e",
+        "android_client_info": {
+          "package_name": "com.xamarin.LeitAlarm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833472560826-7qe6olv140vs4cp05ul79hihi8kic34s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ-K4YCOqZJ_MjOBmE36-9-DTXzbktd_0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833472560826:android:ad48f5678463ca0c",
+        "android_client_info": {
+          "package_name": "com.leitner.leitalarm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833472560826-7qe6olv140vs4cp05ul79hihi8kic34s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ-K4YCOqZJ_MjOBmE36-9-DTXzbktd_0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833472560826:android:31bd62f942376fd2",
+        "android_client_info": {
+          "package_name": "com.leitner.tabbedexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833472560826-7qe6olv140vs4cp05ul79hihi8kic34s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ-K4YCOqZJ_MjOBmE36-9-DTXzbktd_0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
