@@ -170,22 +170,22 @@ public class MainActivity extends AppCompatActivity {
 //                                offsetHelper.setLeftAndRightOffset(leftOffset);
 //                            }
 //                        }
-//                        final int scrollRange = appBarLayout.getTotalScrollRange();
-//                        float offsetFactor = (float) (-verticalOffset) / (float) scrollRange;
-//                        float scaleFactor = 1F - offsetFactor * .5F ;
-//                        collapintoolbarLogo.setScaleX(scaleFactor);
-//                        collapintoolbarLogo.setScaleY(scaleFactor);
-//                        int topOffset = (int) ((mImageTopCollapsed - mImageTopExpanded) * offsetFactor) - verticalOffset;
-//                        int leftOffset = (int) ((mImageLeftCollapsed - mImageLeftExpanded) * offsetFactor);
-//                        ViewCompat.offsetTopAndBottom(collapintoolbarLogo, topOffset - (collapintoolbarLogo.getTop() - collapintoolbarLogo.getTop()));
-//                        ViewCompat.offsetLeftAndRight(collapintoolbarLogo, leftOffset - (collapintoolbarLogo.getLeft() - collapintoolbarLogo.getLeft()));
-////                        Log.d("HEIGHT", String.valueOf(verticalOffset));
-//
-//                        Log.d("POSITIONINGSCALEFACTOR", String.valueOf(scaleFactor));
-//                        Log.d("POSITIONINGTOPBOTTOM", String.valueOf(topOffset - (collapintoolbarLogo.getTop() - collapintoolbarLogo.getTop())));
-//                        Log.d("POSITIONINGLEFTRIGHT", String.valueOf(leftOffset - (collapintoolbarLogo.getLeft() - collapintoolbarLogo.getLeft())));
+                        final int scrollRange = appBarLayout.getTotalScrollRange();
+                        float offsetFactor = (float) (-verticalOffset) / (float) scrollRange;
+                        float scaleFactor = 1F - offsetFactor * .5F ;
+                        collapintoolbarLogo.setScaleX(scaleFactor);
+                        collapintoolbarLogo.setScaleY(scaleFactor);
+                        int topOffset = (int) ((mImageTopCollapsed - mImageTopExpanded) * offsetFactor) - verticalOffset;
+                        int leftOffset = (int) ((mImageLeftCollapsed - mImageLeftExpanded) * offsetFactor);
+                        ViewCompat.offsetTopAndBottom(collapintoolbarLogo, topOffset - (collapintoolbarLogo.getTop() - collapintoolbarLogo.getTop()));
+                        ViewCompat.offsetLeftAndRight(collapintoolbarLogo, leftOffset - (collapintoolbarLogo.getLeft() - collapintoolbarLogo.getLeft()));
+//                        Log.d("HEIGHT", String.valueOf(verticalOffset));
+
+                        Log.d("POSITIONINGSCALEFACTOR", String.valueOf(scaleFactor));
+                        Log.d("POSITIONINGTOPBOTTOM", String.valueOf(topOffset - (collapintoolbarLogo.getTop() - collapintoolbarLogo.getTop())));
+                        Log.d("POSITIONINGLEFTRIGHT", String.valueOf(leftOffset - (collapintoolbarLogo.getLeft() - collapintoolbarLogo.getLeft())));
                         if (verticalOffset >= scrollLimit){
-                            tabHeaderView.setAlpha((float)verticalOffset/(float)scrollLimit);
+                            //tabHeaderView.setAlpha((float)verticalOffset/(float)scrollLimit);
                             if (verticalOffset == scrollLimit){
                                 Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fadein);
                                 imageView.startAnimation(animation);
