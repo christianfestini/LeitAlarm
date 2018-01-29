@@ -14,14 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        android:background="?attr/colorPrimary"
+        android:background="@color/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_collapsing"
             android:layout_width="match_parent"
             android:layout_height="256dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             android:fitsSystemWindows="true"
             app:expandedTitleTextAppearance="@android:color/transparent"
             app:titleEnabled="true">
@@ -30,7 +30,7 @@
                 android:id="@+id/ctoolbar_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorPrimary"
+                android:background="?attr/colorPrimary"
                 android:fitsSystemWindows="true"
                 android:adjustViewBounds="true"
                 android:scaleType="matrix"
@@ -42,13 +42,6 @@
                 android:layout_gravity="center|center_horizontal"
                 android:src="@drawable/demac_logo_transparent"/>
 
-            <View
-                android:id="@+id/tabHeader_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:alpha="0.0"
-                android:background="@color/colorPrimary"
-                android:fitsSystemWindows="true"/>
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"

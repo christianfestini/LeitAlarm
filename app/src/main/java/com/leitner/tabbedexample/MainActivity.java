@@ -101,15 +101,17 @@ public class MainActivity extends AppCompatActivity {
 //        startService(new Intent(this, UpdateBotClientStatusService.class));
 
         editor.putString("resort", "Silvretta").commit();
-        if (sharedPreferences.getString("resort", "").equals("Prinoth"))
+        //Set AppTheme based on registered resort
+        if (sharedPreferences.getString("resort", "").equals("Prinoth")){
             setTheme(R.style.AppTheme_Prinoth);
-        else
-            setTheme(R.style.AppTheme);
-
-//        setTheme(R.style.AppTheme_Ropeways);
+        }
+        else if (sharedPreferences.getString("resort", "").equals("Ropeways")){
+            setTheme(R.style.AppTheme_Ropeways);
+        }else{
+            //Do nothing because AppTheme is already present
+        }
         super.onCreate(savedInstanceState);
-        mImageLeftCollapsed = getResources().getDimensionPixelOffset(R.dimen.image_left_margin_collapsed);
-        mImageTopCollapsed = getResources().getDimensionPixelOffset(R.dimen.image_top_margin_collapsed);
+
 //        editor.clear().commit();
         if (sharedPreferences.getBoolean("app_is_registered", false)){
 
@@ -124,19 +126,33 @@ public class MainActivity extends AppCompatActivity {
 
             Log.d("ARRIVED", "arrived");
             setContentView(R.layout.activity_main);
-            //setContentView(R.layout.register_first);
-            //        db = new AlarmDB(this);
-            //        db.deleteTable();
-            //        db.close();
 
-            final CoordinatorLayout mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content);
+
             final Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-            final View tabHeaderView = (View) findViewById(R.id.tabHeader_view);
-            final ImageView imageView = (ImageView) findViewById(R.id.imageview_title);
-            final ImageView collapsingToolbarImageView = (ImageView) findViewById(R.id.ctoolbar_background);
-            final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_collapsing);
             final AppBarLayout mAppBar = (AppBarLayout) findViewById(R.id.appbar);
             final ImageView collapintoolbarLogo = (ImageView) findViewById(R.id.ctoolbar_icon);
+
+//
+//            final CoordinatorLayout mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content);
+//            final ImageView imageView = (ImageView) findViewById(R.id.imageview_title);
+//            final ImageView collapsingToolbarImageView = (ImageView) findViewById(R.id.ctoolbar_background);
+//            final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_collapsing);
+//
+
+            //Set image based on registered resort
+            if (sharedPreferences.getString("resort", "").equals("Prinoth")){
+
+            }
+            else if (sharedPreferences.getString("resort", "").equals("Ropeways")){
+                collapintoolbarLogo.setImageResource(R.drawable.leitner_logo_transparent);
+            }else{
+                //Do nothing because image is already present
+            }
+
+
+
+            mImageLeftCollapsed = getResources().getDimensionPixelOffset(R.dimen.image_left_margin_collapsed);
+            mImageTopCollapsed = getResources().getDimensionPixelOffset(R.dimen.image_top_margin_collapsed);
             mImageLeftExpanded = collapintoolbarLogo.getLeft();
             mImageTopExpanded = collapintoolbarLogo.getTop();
             editor.putBoolean("application_foreground", true);
@@ -172,32 +188,29 @@ public class MainActivity extends AppCompatActivity {
 //                        }
                         final int scrollRange = appBarLayout.getTotalScrollRange();
                         float offsetFactor = (float) (-verticalOffset) / (float) scrollRange;
-                        float scaleFactor = 1F - offsetFactor * .5F ;
+                        float scaleFactor = 1F - offsetFactor * .7F ;
                         collapintoolbarLogo.setScaleX(scaleFactor);
                         collapintoolbarLogo.setScaleY(scaleFactor);
                         int topOffset = (int) ((mImageTopCollapsed - mImageTopExpanded) * offsetFactor) - verticalOffset;
                         int leftOffset = (int) ((mImageLeftCollapsed - mImageLeftExpanded) * offsetFactor);
-                        ViewCompat.offsetTopAndBottom(collapintoolbarLogo, topOffset - (collapintoolbarLogo.getTop() - collapintoolbarLogo.getTop()));
-                        ViewCompat.offsetLeftAndRight(collapintoolbarLogo, leftOffset - (collapintoolbarLogo.getLeft() - collapintoolbarLogo.getLeft()));
-//                        Log.d("HEIGHT", String.valueOf(verticalOffset));
-
+                        collapintoolbarLogo.setTranslationY(-20 + (topOffset - (collapintoolbarLogo.getTop() - collapintoolbarLogo.getTop())) / 3);
                         Log.d("POSITIONINGSCALEFACTOR", String.valueOf(scaleFactor));
                         Log.d("POSITIONINGTOPBOTTOM", String.valueOf(topOffset - (collapintoolbarLogo.getTop() - collapintoolbarLogo.getTop())));
                         Log.d("POSITIONINGLEFTRIGHT", String.valueOf(leftOffset - (collapintoolbarLogo.getLeft() - collapintoolbarLogo.getLeft())));
                         if (verticalOffset >= scrollLimit){
                             //tabHeaderView.setAlpha((float)verticalOffset/(float)scrollLimit);
-                            if (verticalOffset == scrollLimit){
-                                Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fadein);
-                                imageView.startAnimation(animation);
-                                imageView.setVisibility(View.VISIBLE);
-                            }
-                            else{
-                                if (imageView.getVisibility() == View.VISIBLE){
-                                    Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fadeout);
-                                    imageView.startAnimation(animation);
-                                    imageView.setVisibility(View.INVISIBLE);
-                                }
-                            }
+//                            if (verticalOffset == scrollLimit){
+//                                Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fadein);
+//                                imageView.startAnimation(animation);
+//                                imageView.setVisibility(View.VISIBLE);
+//                            }
+//                            else{
+//                                if (imageView.getVisibility() == View.VISIBLE){
+//                                    Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fadeout);
+//                                    imageView.startAnimation(animation);
+//                                    imageView.setVisibility(View.INVISIBLE);
+//                                }
+//                            }
                         }
 
 
@@ -406,96 +419,6 @@ public class MainActivity extends AppCompatActivity {
                     return getResources().getString(R.string.settings);
             }
             return null;
-        }
-    }
-
-    private static ViewOffsetHelper getViewOffsetHelper(View view) {
-        ViewOffsetHelper offsetHelper = (ViewOffsetHelper) view.getTag(R.id.view_offset_helper);
-        if (offsetHelper == null) {
-            offsetHelper = new ViewOffsetHelper(view);
-            view.setTag(R.id.view_offset_helper, offsetHelper);
-        }
-        return offsetHelper;
-    }
-
-    static class ViewOffsetHelper {
-
-        private final View mView;
-
-        private int mLayoutTop;
-        private int mLayoutLeft;
-        private int mOffsetTop;
-        private int mOffsetLeft;
-
-        public ViewOffsetHelper(View view) {
-            mView = view;
-        }
-
-        public void onViewLayout() {
-            // Now grab the intended top
-            mLayoutTop = mView.getTop();
-            mLayoutLeft = mView.getLeft();
-
-            // And offset it as needed
-            updateOffsets();
-        }
-
-        private void updateOffsets() {
-            ViewCompat.offsetTopAndBottom(mView, mOffsetTop - (mView.getTop() - mLayoutTop));
-            ViewCompat.offsetLeftAndRight(mView, mOffsetLeft - (mView.getLeft() - mLayoutLeft));
-
-            // Manually invalidate the view and parent to make sure we get drawn pre-M
-            if (Build.VERSION.SDK_INT < 23) {
-                tickleInvalidationFlag(mView);
-                final ViewParent vp = mView.getParent();
-                if (vp instanceof View) {
-                    tickleInvalidationFlag((View) vp);
-                }
-            }
-        }
-
-        private static void tickleInvalidationFlag(View view) {
-            final float y = ViewCompat.getTranslationY(view);
-            ViewCompat.setTranslationY(view, y + 1);
-            ViewCompat.setTranslationY(view, y);
-        }
-
-        /**
-         * Set the top and bottom offset for this {@link ViewOffsetHelper}'s view.
-         *
-         * @param offset the offset in px.
-         * @return true if the offset has changed
-         */
-        public boolean setTopAndBottomOffset(int offset) {
-            if (mOffsetTop != offset) {
-                mOffsetTop = offset;
-                updateOffsets();
-                return true;
-            }
-            return false;
-        }
-
-        /**
-         * Set the left and right offset for this {@link ViewOffsetHelper}'s view.
-         *
-         * @param offset the offset in px.
-         * @return true if the offset has changed
-         */
-        public boolean setLeftAndRightOffset(int offset) {
-            if (mOffsetLeft != offset) {
-                mOffsetLeft = offset;
-                updateOffsets();
-                return true;
-            }
-            return false;
-        }
-
-        public int getTopAndBottomOffset() {
-            return mOffsetTop;
-        }
-
-        public int getLeftAndRightOffset() {
-            return mOffsetLeft;
         }
     }
 }
