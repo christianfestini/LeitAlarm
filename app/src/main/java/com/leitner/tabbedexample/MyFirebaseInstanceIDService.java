@@ -42,6 +42,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService{
                     connection.setRequestProperty("Content-Type", "application/json");
                     connection.setRequestProperty("accept", "application/json");
                     connection.setConnectTimeout(10000);
+                    connection.setReadTimeout(10000);
                     connection.setRequestMethod("POST");
                     connection.setDoInput(true);
                     connection.setDoOutput(true);

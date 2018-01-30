@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        startService(new Intent(this, UpdateBotClientStatusService.class));
 
-        editor.putString("resort", "Silvretta").commit();
+        //editor.putString("resort", "Silvretta").commit();
         //Set AppTheme based on registered resort
         if (sharedPreferences.getString("resort", "").equals("Prinoth")){
             setTheme(R.style.AppTheme_Prinoth);
@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         }else{
             //Do nothing because AppTheme is already present
         }
+        //setTheme(R.style.AppTheme_Prinoth);
         super.onCreate(savedInstanceState);
 
 //        editor.clear().commit();
@@ -141,14 +142,14 @@ public class MainActivity extends AppCompatActivity {
 
             //Set image based on registered resort
             if (sharedPreferences.getString("resort", "").equals("Prinoth")){
-
+                collapintoolbarLogo.setImageResource(R.drawable.prinoth_logo_transparent);
             }
             else if (sharedPreferences.getString("resort", "").equals("Ropeways")){
                 collapintoolbarLogo.setImageResource(R.drawable.leitner_logo_transparent);
             }else{
                 //Do nothing because image is already present
             }
-
+            //collapintoolbarLogo.setImageResource(R.drawable.prinoth_logo_transparent);
 
 
             mImageLeftCollapsed = getResources().getDimensionPixelOffset(R.dimen.image_left_margin_collapsed);

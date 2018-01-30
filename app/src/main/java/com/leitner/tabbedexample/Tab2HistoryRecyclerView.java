@@ -29,7 +29,7 @@ public class Tab2HistoryRecyclerView extends Fragment {
     private OnFragmentInteractionListener mListener;
     AlarmDB db;
     public static AlarmAdapterRecycle adapter;
-    RecyclerView historicAlarms;
+    public static RecyclerView alarmView;
 
     public Tab2HistoryRecyclerView() {
         // Required empty public constructor
@@ -72,7 +72,7 @@ public class Tab2HistoryRecyclerView extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getBaseContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-        historicAlarms = (RecyclerView) view.findViewById(R.id.recycler_view);
+        alarmView = (RecyclerView) view.findViewById(R.id.recycler_view);
         RefreshView();
 
 
@@ -126,7 +126,7 @@ public class Tab2HistoryRecyclerView extends Fragment {
         Log.d("REFRESHED", "history");
         if (jsonList.size() > 0){
             adapter = new AlarmAdapterRecycle(jsonList, getContext(), false);
-            historicAlarms.setAdapter(adapter);
+            alarmView.setAdapter(adapter);
 //            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) historicAlarms.getLayoutParams();
 //            mlp.setMargins(0, 0, 0, getSoftButtonsBarHeight());
 //            noAlarms.setVisibility(View.GONE);
@@ -134,6 +134,6 @@ public class Tab2HistoryRecyclerView extends Fragment {
         }
 //        else
         adapter = new AlarmAdapterRecycle(jsonList, getContext(), false);
-        historicAlarms.setAdapter(adapter);
+        alarmView.setAdapter(adapter);
     }
 }

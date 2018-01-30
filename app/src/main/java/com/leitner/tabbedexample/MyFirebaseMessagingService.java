@@ -131,20 +131,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     public void run() {
                         AlarmDB db = new AlarmDB(getApplicationContext());
                         db.getReadableDatabase();
-                        if (!Tab1Actual.adapter.isEmpty()) {
-                            Tab1Actual.adapter.clear();
-                        }
-                        Tab1Actual.adapter.addAll(db.getAllAlarmsActual());
-                        if (Tab1Actual.adapter.getCount() >= 1)
-                            Tab1Actual.noAlarms.setVisibility(View.INVISIBLE);
-                        else
-                            Tab1Actual.noAlarms.setVisibility(View.VISIBLE);
-                        Log.d("RM", "actual");
-                        if (!Tab2History.adapter.isEmpty()) {
-                            Tab2History.adapter.clear();
+                        if (Tab1ActualRecyclerView.adapter != null){
+                            Tab1ActualRecyclerView.alarmView.swapAdapter(new AlarmAdapterRecycle(db.getAllAlarmsActual(), getApplicationContext(), true), true);
                         }
 
-                        Tab2History.adapter.addAll(db.getAllAlarmsHistoric());
+                        Log.d("RM", "actual");
+                        if (Tab2HistoryRecyclerView.adapter != null){
+                            Tab2HistoryRecyclerView.alarmView.swapAdapter(new AlarmAdapterRecycle(db.getAllAlarmsHistoric(), getApplicationContext(), false), true);
+                        }
                         Log.d("RM", "history");
                         db.close();
                     }
@@ -175,20 +169,22 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     public void run() {
                         AlarmDB db = new AlarmDB(getApplicationContext());
                         db.getReadableDatabase();
-                        if (!Tab1Actual.adapter.isEmpty()){
-                            Tab1Actual.adapter.clear();
+//                        if (!Tab1Actual.adapter.isEmpty()){
+//                            Tab1Actual.adapter.clear();
+//                        }
+                        if (Tab1ActualRecyclerView.adapter != null){
+                            Tab1ActualRecyclerView.alarmView.swapAdapter(new AlarmAdapterRecycle(db.getAllAlarmsActual(), getApplicationContext(), true), true);
                         }
-                        Tab1Actual.adapter.addAll(db.getAllAlarmsActual());
-                        if (Tab1Actual.adapter.getCount() >= 1)
-                            Tab1Actual.noAlarms.setVisibility(View.INVISIBLE);
-                        else
-                            Tab1Actual.noAlarms.setVisibility(View.VISIBLE);
+//                        Tab1Actual.adapter.addAll(db.getAllAlarmsActual());
+//                        if (Tab1Actual.adapter.getCount() >= 1)
+//                            Tab1Actual.noAlarms.setVisibility(View.INVISIBLE);
+//                        else
+//                            Tab1Actual.noAlarms.setVisibility(View.VISIBLE);
                         Log.d("RM", "actual");
-                        if (!Tab2History.adapter.isEmpty()){
-                            Tab2History.adapter.clear();
+                        if (Tab2HistoryRecyclerView.adapter != null){
+                            Tab2HistoryRecyclerView.alarmView.swapAdapter(new AlarmAdapterRecycle(db.getAllAlarmsHistoric(), getApplicationContext(), false), true);
                         }
-
-                        Tab2History.adapter.addAll(db.getAllAlarmsHistoric());
+//                        Tab2History.adapter.addAll(db.getAllAlarmsHistoric());
                         Log.d("RM", "history");
                         db.close();
                     }
@@ -257,12 +253,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 //                            else
 //                                Log.d("TIME", "somethings wrong");
                             String string1 = sharedPreferences.getString("time_from", "");
-                            Date time1 = new SimpleDateFormat("HH:mm").parse(string1);
+                            Date time1 = new SimpleDateFormat("HH:mm:ss").parse(string1 + ":00");
                             Calendar calendar1 = Calendar.getInstance();
                             calendar1.setTime(time1);
 
                             String string2 = sharedPreferences.getString("time_to", "");
-                            Date time2 = new SimpleDateFormat("HH:mm").parse(string2);
+                            Date time2 = new SimpleDateFormat("HH:mm:ss").parse(string2 + ":00");
                             Calendar calendar2 = Calendar.getInstance();
                             calendar2.setTime(time2);
                             calendar2.add(Calendar.DATE, 1);
@@ -319,21 +315,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     public void run() {
                         AlarmDB db = new AlarmDB(getApplicationContext());
                         db.getReadableDatabase();
-                        if (!Tab1Actual.adapter.isEmpty()){
-                            Tab1Actual.adapter.clear();
+                        if (Tab1ActualRecyclerView.adapter != null){
+                            Tab1ActualRecyclerView.alarmView.swapAdapter(new AlarmAdapterRecycle(db.getAllAlarmsActual(), getApplicationContext(), true), true);
                         }
-                        Tab1Actual.adapter.addAll(db.getAllAlarmsActual());
-                        if (Tab1Actual.adapter.getCount() >= 1)
-                            Tab1Actual.noAlarms.setVisibility(View.INVISIBLE);
-                        else
-                            Tab1Actual.noAlarms.setVisibility(View.VISIBLE);
-                        Log.d("RM", "actual");
-                        if (!Tab2History.adapter.isEmpty()){
-                            Tab2History.adapter.clear();
+                        if (Tab2HistoryRecyclerView.adapter != null){
+                            Tab2HistoryRecyclerView.alarmView.swapAdapter(new AlarmAdapterRecycle(db.getAllAlarmsHistoric(), getApplicationContext(), false), true);
+                            Tab2HistoryRecyclerView.adapter.notifyItemInserted(0);
                         }
-
-                        Tab2History.adapter.addAll(db.getAllAlarmsHistoric());
-                        Log.d("RM", "history");
                         db.close();
                     }
                 });

@@ -10,7 +10,7 @@ android {
         minSdkVersion 17
         targetSdkVersion 27
         versionCode 1
-        versionName "1.2018.01.25"
+        versionName "1.2018.01.30"
         project.ext.set("archivesBaseName", "SnowAlert-" + versionName);
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true

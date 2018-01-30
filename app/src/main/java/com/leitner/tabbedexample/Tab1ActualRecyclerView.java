@@ -27,7 +27,7 @@ public class Tab1ActualRecyclerView extends Fragment {
     private Tab1ActualRecyclerView.OnFragmentInteractionListener mListener;
     AlarmDB db;
     public static AlarmAdapterRecycle adapter;
-    RecyclerView historicAlarms;
+    public static RecyclerView alarmView;
 
     public Tab1ActualRecyclerView() {
         // Required empty public constructor
@@ -70,7 +70,7 @@ public class Tab1ActualRecyclerView extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getBaseContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-        historicAlarms = (RecyclerView) view.findViewById(R.id.recycler_view);
+        alarmView = (RecyclerView) view.findViewById(R.id.recycler_view);
         RefreshView();
 
 
@@ -132,6 +132,6 @@ public class Tab1ActualRecyclerView extends Fragment {
 //        }
 //        else
         adapter = new AlarmAdapterRecycle(jsonList, getContext(), true);
-        historicAlarms.setAdapter(adapter);
+        alarmView.setAdapter(adapter);
     }
 }
